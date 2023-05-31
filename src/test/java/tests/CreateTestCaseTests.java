@@ -24,7 +24,7 @@ public class CreateTestCaseTests extends TestBase{
     void createWithUiOnlyTest() {
         String testCaseName = faker.name().fullName();
 
-        step("Authorize", () -> {
+        step("Авторизация", () -> {
             loginPage.openPage()
                     .setLogin(login)
                     .setPassword(password)
@@ -32,13 +32,13 @@ public class CreateTestCaseTests extends TestBase{
             testCasesPage.checkSideMenu();
         });
 
-        step("Go to project", () ->
+        step("Перейти к проекту", () ->
                 testCasesPage.openProjectPage());
 
-        step("Create test case", () ->
+        step("Создание тест-кейса", () ->
                 testCasesPage.setTestcaseName(testCaseName));
 
-        step("Check test case name", () ->
+        step("Проверка имени тест-кейса", () ->
                 testCasesPage.checkTestCaseNameAtSideBar(testCaseName));
     }
 
@@ -49,7 +49,7 @@ public class CreateTestCaseTests extends TestBase{
         CreateTestCaseBodyModel testCaseBody = new CreateTestCaseBodyModel();
         testCaseBody.setName(testCaseName);
 
-        step("Authorize", () -> {
+        step("Авторизация", () -> {
             loginPage.openPage()
                     .setLogin(login)
                     .setPassword(password)
@@ -57,10 +57,10 @@ public class CreateTestCaseTests extends TestBase{
             testCasesPage.checkSideMenu();
         });
 
-        step("Go to project", () ->
+        step("Перейти к проекту", () ->
                 testCasesPage.openProjectPage());
 
-        CreateTestCaseResponseModel createTestCaseResponse = step("Create testcase", () ->
+        CreateTestCaseResponseModel createTestCaseResponse = step("Создание тест-кейса", () ->
                 given(requestSpec)
                         .body(testCaseBody)
                         .queryParam("projectId", projectId)
@@ -72,10 +72,10 @@ public class CreateTestCaseTests extends TestBase{
 
         Integer testCaseId = createTestCaseResponse.getId();
 
-        step("Open test case editor", () ->
+        step("Открыть редактор тест-кейса", () ->
                 testCasesPage.openTestCaseEditor(projectId, testCaseId));
 
-        step("Check test case name", () ->
+        step("Проверить имя тест-кейса", () ->
                 testCasesPage.checkTestCaseNameInEditor(testCaseName));
     }
 
@@ -84,7 +84,7 @@ public class CreateTestCaseTests extends TestBase{
         Faker faker = new Faker();
         String testCaseName = faker.name().fullName();
 
-        step("Authorize", () -> {
+        step("Авторизация", () -> {
             loginPage.openPage()
                     .setLogin(login)
                     .setPassword(password)
@@ -92,10 +92,10 @@ public class CreateTestCaseTests extends TestBase{
             testCasesPage.checkSideMenu();
         });
 
-        step("Go to project", () ->
+        step("Перейти к проекту", () ->
                 testCasesPage.openProjectPage());
 
-        step("Create testcase", () -> {
+        step("Создание тест-кейса", () -> {
             CreateTestCaseBodyModel testCaseBody = new CreateTestCaseBodyModel();
             testCaseBody.setName(testCaseName);
 

@@ -29,13 +29,13 @@ public class TestOpsTestCaseTests extends TestBase{
     String stepNameInitial = faker.book().title();
 
 
-    @Tag("update")
+    @Tag("Обновление")
     @Test
     void updateTestCaseNameAndDescriptionTest() {
         CreateTestCaseBodyModel createTestCaseBody = new CreateTestCaseBodyModel();
         createTestCaseBody.setName(testCaseNameInitial);
 
-        step("Authorize", () -> {
+        step("Авторизация", () -> {
             loginPage.openPage()
                     .setLogin(login)
                     .setPassword(password)
@@ -43,7 +43,7 @@ public class TestOpsTestCaseTests extends TestBase{
             testCasesPage.checkSideMenu();
         });
 
-        step("Go to project", () ->
+        step("Перейти к проекту", () ->
                 testCasesPage.openProjectPage());
 
         CreateTestCaseResponseModel createTestCaseResponse = step("Create testcase", () ->
@@ -63,7 +63,7 @@ public class TestOpsTestCaseTests extends TestBase{
         addDescriptionBody.setDescription(testCaseDescriptionInitial);
         addDescriptionBody.setDescriptionHtml(null);
 
-        AddDescriptionResponseModel addDescriptionResponse = step("Add description to testcase", () ->
+        AddDescriptionResponseModel addDescriptionResponse = step("Добавление описания к тест-кейсу", () ->
                 given(requestSpec)
                         .body(addDescriptionBody)
                         .when()
@@ -72,35 +72,35 @@ public class TestOpsTestCaseTests extends TestBase{
                         .spec(responseSpec)
                         .extract().as(AddDescriptionResponseModel.class));
 
-        step("Open test case editor", () ->
+        step("Открытие редактора тест-кейса", () ->
                 testCasesPage.openTestCaseEditor(projectId, testCaseId));
 
-        step("Check test case name", () ->
+        step("Проверка имени тест-кейса", () ->
                 testCasesPage.checkTestCaseNameInEditor(testCaseNameInitial));
 
-        step("Check description", () ->
+        step("Проверка описания", () ->
                 testCasesPage.checkTestCaseDescription(testCaseDescriptionInitial));
 
-        step("Update test case name", () ->
+        step("Обновление имени тест-кейса", () ->
                 testCasesPage.updateTestCaseName(testCaseNameUpdated));
 
-        step("Check updated test case name", () ->
+        step("Проверка обновлённого имени тест-кейса", () ->
                 testCasesPage.checkTestCaseNameInEditor(testCaseNameUpdated));
 
-        step("Update description", () ->
+        step("Обновить описание", () ->
                 testCasesPage.updateTestCaseDescription(testCaseDescriptionUpdated));
 
-        step("Check updated description", () ->
+        step("Проверка обновлённого описания", () ->
                 testCasesPage.checkTestCaseDescription(testCaseDescriptionUpdated));
     }
 
     @Test
-    @Tag("update")
+    @Tag("Обновление")
     void addStepToTestCaseTest() {
         CreateTestCaseBodyModel createTestCaseBody = new CreateTestCaseBodyModel();
         createTestCaseBody.setName(testCaseNameInitial);
 
-        step("Authorize", () -> {
+        step("Авторизация", () -> {
             loginPage.openPage()
                     .setLogin(login)
                     .setPassword(password)
@@ -108,7 +108,7 @@ public class TestOpsTestCaseTests extends TestBase{
             testCasesPage.checkSideMenu();
         });
 
-        step("Go to project", () ->
+        step("Перейти к поекту", () ->
                 testCasesPage.openProjectPage());
 
         CreateTestCaseResponseModel createTestCaseResponse = step("Create testcase", () ->
@@ -123,16 +123,16 @@ public class TestOpsTestCaseTests extends TestBase{
 
         Integer testCaseId = createTestCaseResponse.getId();
 
-        step("Open test case editor", () ->
+        step("Открытие редактора тест-кейса", () ->
                 testCasesPage.openTestCaseEditor(projectId, testCaseId));
 
-        step("Check test case name", () ->
+        step("Проверка имени тест-кейса", () ->
                 testCasesPage.checkTestCaseNameInEditor(testCaseNameInitial));
 
-        step("Add step to test case", () ->
+        step("Добавление шага в тест-кейс", () ->
                 testCasesPage.addStepToTestCase(stepNameInitial));
 
-        step("Check step name", () ->
+        step("Проверка имени добавленного шага", () ->
                 testCasesPage.checkStepName(stepNameInitial));
     }
 

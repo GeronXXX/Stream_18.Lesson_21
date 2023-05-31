@@ -101,9 +101,9 @@ public class CreateTestCaseTests extends TestBase{
 
             given()
                     .log().all()
-                    .header("X-XSRF-TOKEN", "017065f5-93ff-4ba5-bfdf-9c9434b986a6")
-                    .cookies("XSRF-TOKEN", "017065f5-93ff-4ba5-bfdf-9c9434b986a6",
-                            "ALLURE_TESTOPS_SESSION", "f8244d0e-f377-45d0-b80c-b9da95edc1ce")
+                    .header("X-XSRF-TOKEN", "0a1578fc-9cbf-4dce-8429-55ef2ce0c4e2")
+                    .cookies("XSRF-TOKEN", "0a1578fc-9cbf-4dce-8429-55ef2ce0c4e2",
+                            "ALLURE_TESTOPS_SESSION", "d61aa6a9-9898-4581-a0ec-470d832ca94e")
                     .contentType("application/json;charset=UTF-8")
                     .body(testCaseBody)
                     .queryParam("projectId", projectId)
